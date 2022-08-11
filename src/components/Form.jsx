@@ -47,34 +47,17 @@ const Form = () => {
     }
   };
 
-  const B2C = async (e) => {
+   const B2C = async (e) => {
     e.preventDefault();
     let customerInfo = {
       stkPushNo,
       amount,
-      // token,
     };
 
     console.log(customerInfo);
-
-    try {
-      axios.delete(`/email/${info.name}`).then((response) => {
-        setStatusTracker(true);
-        setResponse(response.data);
-        setResponseTracker(true);
-        setTimeout(() => {
-          setResponseTracker(false);
-        }, 3000);
-      });
-    } catch (error) {
-      setStatusTracker(false);
-      setResponse(error.message);
-      setResponseTracker(true);
-      setTimeout(() => {
-        setResponseTracker(false);
-      }, 3000);
-    }
   };
+
+ 
   return (
     <>
       <form className="m-2 flex-col items-center justify-center mt-10 px-5 py-5">
@@ -157,13 +140,7 @@ const Form = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between my-5 mx-5"></div>
-
-        <div className="flex px-5 justify-around items-center border-2 border-red-700 my-3 w-full">
-          <Button type="button" text="Lipa na Mpesa" onClick={mpesaExpress} />
-          <Button type="button" text="Business to Customer" onClick={B2C} />
-        </div>
-
+         <div>
         {responseTracker ? (
           <p
             className={`${
@@ -175,6 +152,15 @@ const Form = () => {
         ) : (
           " "
         )}
+        </div>
+
+
+        <div className="flex flex-col justify-center items-center w-full mt-8">
+          <Button type="button" text="Lipa na Mpesa" onClick={mpesaExpress} />
+          <Button type="button" text="Business to Customer" onClick={B2C} />
+        </div>
+
+     
       </form>
     </>
   );
