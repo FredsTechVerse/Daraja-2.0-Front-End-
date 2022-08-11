@@ -1,0 +1,25 @@
+.App{
+  display:flex;
+  /* justify-content:center; */
+  align-items:center;
+  flex-direction:column;
+}
+
+.form {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  border:1px solid green;
+  border-radius:5px;
+  width:80vw;
+  height:auto;
+  max-height:60vh;
+  overflow-y:scroll;
+  margin-top:2rem;
+  padding:1rem;
+}
+
+.par-uppercase{
+  text-transform:uppercase;
+}
