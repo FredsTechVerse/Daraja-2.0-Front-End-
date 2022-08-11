@@ -85,12 +85,12 @@ const Form = () => {
           Transaction Details
         </h1>
 
-        <div className="flex justify-around items-center my-10">
-          <label for="contact" className="w-1/5">
+        <div className="flex phone:flex-col justify-around items-center my-10">
+          <label for="contact" className="w-1/5 phone:w-full">
             Names
           </label>
           <input
-            className="px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
             id="fName"
             type="Text"
             placeholder="First Name"
@@ -102,7 +102,7 @@ const Form = () => {
           ></input>
 
           <input
-            className="px-4 ml-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
             id="lName"
             type="Text"
             placeholder="Last Name"
@@ -113,20 +113,21 @@ const Form = () => {
             required
           ></input>
         </div>
-        <div className="flex items-center justify-center my-5">
-          <div className="w-2/3 flex items-center justify-center ">
+        <div className="flex phone:flex-col  items-center justify-center my-5">
+          <div className="w-2/3 flex phone:flex-col items-center justify-center ">
             <label for="contact" className="w-1/5">
               Contact
             </label>
+            <div className="phone:flex  phone:items-center">
             <input
-              className="px-4 w-1/5 bg-white-200 appearance-none py-2 mr-1 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+              className="px-4 w-1/5 phone:w-2/5 phone:m-0  bg-white-200 appearance-none py-2 mr-1 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
               type="Text"
               required
               value="+254"
               readOnly
             />
             <input
-              className="w-3/5 bg-white-200 appearance-none ml-2 mr-10  border-2 border-green-400 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+              className="w-3/5 phone:w-3/5 phone:m-0 phone:px-0  bg-white-200 appearance-none ml-2 mr-10  border-2 border-green-400 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
               id="contact"
               type="Number"
               placeholder="Safaricom No."
@@ -136,8 +137,9 @@ const Form = () => {
               }}
               required
             />
+            </div>
           </div>
-          <div className="w-1/3 flex items-center justify-center ">
+          <div className="w-1/3 phone:w-full flex items-center justify-center ">
             <label for="contact" className="w-2/5">
               Amount
             </label>
