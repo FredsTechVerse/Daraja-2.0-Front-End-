@@ -26,7 +26,7 @@ const Form = () => {
         console.log(`Response received => ${response.data}`);
         if(response.data == 0 ){
         setStatusTracker(true);
-        setResponse("Success.STK push sent to client. Awaiting results hands closed!");
+        setResponse("STK push has been sent successfully.");
         setResponseTracker(true);
         setTimeout(() => {
           setResponseTracker(false);
@@ -159,7 +159,7 @@ const Form = () => {
           <p
             className={`${
               statusTracker ? " bg-green-300 border-green-600" : " bg-red-300 border-red-600"
-            } text-stone-600 text-center p-4 border-l-4`}
+            } fixed top-2 right-5 text-stone-600 text-center p-4 border-l-4`}
           >
             {response}
           </p>
