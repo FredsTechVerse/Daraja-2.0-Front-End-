@@ -22,30 +22,44 @@ const Form = () => {
       stkPushNo: `254${stkPushNo}`,
       amount,
     };
-
-    console.log(customerInfo);
-
-    try {
-      axios.post("/express", customerInfo).then(async (response) => {
-        let description = await response.data.ResponseDescription;
-        console.log(description);
+      axios.post("/express", customerInfo).then((response) => {
+        console.log(`Response received => ${response.data}`);
+        if(response.data == 0 ){
         setStatusTracker(true);
-        setResponse(description);
+        setResponse("Success.STK push sent to client. Awaiting results hands closed!");
         setResponseTracker(true);
         setTimeout(() => {
           setResponseTracker(false);
         }, 3000);
-      });
-    } catch (error) {
-      console.log(`Error : ${error}`);
-      setStatusTracker(false);
-      setResponse(error.message);
-      setResponseTracker(true);
-      setTimeout(() => {
-        setResponseTracker(false);
-      }, 3000);
-    }
-  };
+        }
+        else {
+        console.log(`Post request Data =>${response.data}`);
+        setStatusTracker(false);
+        setResponse(`${response.data}`);
+        setResponseTracker(true);
+        setTimeout(() => {
+          setResponseTracker(false);
+        }, 3000);
+        }
+      }).catch((error)=>{//This simply is called when the promise was not fulfilled.An error handles an error.
+        //If axios is not the response, inajiforce yenyewe tu kufit.
+        console.log(error);//
+        let failed_req = error.response.data;
+        /*By default it we append the error,the error.message will be output.We have to destructure 
+        further to get our custom error message which is in the response data section. But we have to understand that also in the front end we have used 
+        axios. So ata hiyo imepata a response of status 500 meaning the promise has not been fulfilled,so it has to shout all over the 
+        place with the info that it has been given.
+        DARAJA GIVES IT THE WHOLE BODY. I GIVE IT A CUSTOM MESSAGE.THE AXIOS MESSAGE IS GENERATED FROM THE SERVER STATUS IT RECIEVES
+        FROM WHEREVER IT WAS DELIVERING THE INFOMATIN TO. */
+        setStatusTracker(false);
+        setResponse(`${failed_req}`);
+        setResponseTracker(true);
+        setTimeout(() => {
+          setResponseTracker(false);
+        }, 3000);
+        
+    })};
+
 
    const B2C = async (e) => {
     e.preventDefault();
@@ -144,8 +158,8 @@ const Form = () => {
         {responseTracker ? (
           <p
             className={`${
-              statusTracker ? "bg-green-500" : "bg-red-500"
-            } text-stone-600 text-center`}
+              statusTracker ? " bg-green-300 border-green-600" : " bg-red-300 border-red-600"
+            } text-stone-600 text-center p-4 border-l-4`}
           >
             {response}
           </p>
