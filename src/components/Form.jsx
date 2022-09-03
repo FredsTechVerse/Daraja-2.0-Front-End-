@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "./Button";
 import axios from "../axios";
 import { motion } from "framer-motion";
+import Breadcrumb from "../components/BreadCrumb";
 
 const Form = () => {
   // DECLARATION OF VARIABLES
@@ -22,29 +23,30 @@ const Form = () => {
       stkPushNo: `254${stkPushNo}`,
       amount,
     };
-      axios.post("/express", customerInfo).then((response) => {
+    axios
+      .post("/express", customerInfo)
+      .then((response) => {
         console.log(`Response received => ${response.data}`);
-        if(response.data == 0 ){
-        setStatusTracker(true);
-        setResponse("STK push has been sent successfully.");
-        setResponseTracker(true);
-        setTimeout(() => {
-          setResponseTracker(false);
-        }, 3000);
+        if (response.data == 0) {
+          setStatusTracker(true);
+          setResponse("STK push has been sent successfully.");
+          setResponseTracker(true);
+          setTimeout(() => {
+            setResponseTracker(false);
+          }, 3000);
+        } else {
+          console.log(`Post request Data =>${response.data}`);
+          setStatusTracker(false);
+          setResponse(`${response.data}`);
+          setResponseTracker(true);
+          setTimeout(() => {
+            setResponseTracker(false);
+          }, 3000);
         }
-        else {
-        console.log(`Post request Data =>${response.data}`);
-        setStatusTracker(false);
-        setResponse(`${response.data}`);
-        setResponseTracker(true);
-        setTimeout(() => {
-          setResponseTracker(false);
-        }, 3000);
-        }
-      }).catch((error)=>{//This simply is called when the promise was not fulfilled.An error handles an error.
-        //If axios is not the response, inajiforce yenyewe tu kufit.
-        console.log(error);//
-        let failed_req = error.response.data;
+      })
+      .catch((error) => {
+        //This simply is called when the promise was not fulfilled.An error handles an error(ie any status other than okay.).
+        console.log(error.message);
         /*By default it we append the error,the error.message will be output.We have to destructure 
         further to get our custom error message which is in the response data section. But we have to understand that also in the front end we have used 
         axios. So ata hiyo imepata a response of status 500 meaning the promise has not been fulfilled,so it has to shout all over the 
@@ -57,31 +59,12 @@ const Form = () => {
         setTimeout(() => {
           setResponseTracker(false);
         }, 3000);
-        
-    })};
-
-
-   const B2C = async (e) => {
-    e.preventDefault();
-    let customerInfo = {
-      stkPushNo,
-      amount,
-    };
-
-    console.log(customerInfo);
+      });
   };
 
- 
   return (
-    <>
-      <form className="m-2 flex-col items-center justify-center mt-10 px-5 py-5">
-        <h1
-          id="form__heading"
-          className=" flex items-center uppercase justify-center font-extrabold text-2xl"
-        >
-          Transaction Mockup
-        </h1>
-
+    <div className="px-5">
+      <form className="border-2 border-rose-500 rounded-md flex-col items-center justify-center mt-5 px-5 py-5 w-full">
         <div className="flex phone:flex-col justify-around items-center my-10">
           <label for="contact" className="w-1/5 phone:w-full">
             Names
@@ -116,24 +99,24 @@ const Form = () => {
               Contact
             </label>
             <div className=" phone:flex phone:w-full phone:items-center">
-            <input
-              className="px-4 w-1/5 phone:w-2/5 phone:m-0  bg-white-200 appearance-none py-2 mr-1 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-              type="Text"
-              required
-              value="+254"
-              readOnly
-            />
-            <input
-              className="w-3/4 phone:w-full phone:ml-2  bg-white-200 appearance-none ml-2  border-2 border-green-400 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-              id="contact"
-              type="Number"
-              placeholder="Safaricom No."
-              value={stkPushNo}
-              onChange={(e) => {
-                setStkPushNo(e.target.value);
-              }}
-              required
-            />
+              <input
+                className="px-4 w-1/5 phone:w-2/5 phone:m-0  bg-white-200 appearance-none py-2 mr-1 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                type="Text"
+                required
+                value="+254"
+                readOnly
+              />
+              <input
+                className="w-3/4 phone:w-full phone:ml-2  bg-white-200 appearance-none ml-2  border-2 border-green-400 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                id="contact"
+                type="Number"
+                placeholder="Safaricom No."
+                value={stkPushNo}
+                onChange={(e) => {
+                  setStkPushNo(e.target.value);
+                }}
+                required
+              />
             </div>
           </div>
           <div className="w-1/3 phone:w-full phone:my-1  phone:flex flex items-center">
@@ -154,29 +137,31 @@ const Form = () => {
           </div>
         </div>
 
-         <div>
-        {responseTracker ? (
-          <p
-            className={`${
-              statusTracker ? " bg-green-300 border-green-600" : " bg-red-300 border-red-600"
-            } fixed top-2 right-5 text-stone-600 text-center p-4 border-l-4`}
-          >
-            {response}
-          </p>
-        ) : (
-          " "
-        )}
+        <div>
+          {responseTracker ? (
+            <p
+              className={`${
+                statusTracker
+                  ? " bg-green-300 border-green-600"
+                  : " bg-red-300 border-red-600"
+              } fixed top-2 right-5 text-stone-600 text-center p-4 border-l-4`}
+            >
+              {response}
+            </p>
+          ) : (
+            " "
+          )}
         </div>
-
 
         <div className="flex flex-col justify-center items-center w-full mt-8">
-          <Button type="button" text="Lipa na Mpesa" onClick={mpesaExpress} />
-          <Button type="button" text="Business to Customer" onClick={B2C} />
+          <Button
+            type="button"
+            text="Complete Transaction"
+            onClick={mpesaExpress}
+          />
         </div>
-
-     
       </form>
-    </>
+    </div>
   );
 };
 
