@@ -51,6 +51,7 @@ function App() {
           <>
             <CustomNav />
             <Routes>
+              <Route path="/" element={<Form />}></Route>
               <Route path="/home" element={<Form />}></Route>
               <Route
                 exact
@@ -58,8 +59,6 @@ function App() {
                 element={<History history={paymentHistory} />}
               ></Route>
             </Routes>
-
-            <BreadCrumb />
           </>
         )}
       </div>

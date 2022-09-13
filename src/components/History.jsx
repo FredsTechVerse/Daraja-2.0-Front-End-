@@ -1,4 +1,5 @@
 import React from "react";
+import Breadcrumb from "../components/BreadCrumb";
 const History = ({ history }) => {
   return (
     <>
@@ -63,6 +64,9 @@ const History = ({ history }) => {
             })}
           </tbody>
         </table>
+      </div>
+      <div className="w-3/5 mt-5">
+        <Breadcrumb />
       </div>
     </>
   );

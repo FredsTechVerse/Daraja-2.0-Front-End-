@@ -8,7 +8,7 @@ const BreadCrumb = () => {
           return (
             <button key={`${item}-${index} `}>
               <Link
-                className="rounded-lg text-center  capitalize w-full px-4 text-dark hover:text-white bg-rose-600 border-2 hover:bg-green-600 py-2"
+                className="rounded-lg  text-center  capitalize w-full px-10 text-dark hover:text-white bg-rose-600 border-2 hover:bg-green-600 py-2"
                 to={`/${item}`}
               >
                 {item}
