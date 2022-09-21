@@ -64,9 +64,9 @@ const History = ({ history }) => {
             })}
           </tbody>
         </table>
-      </div>
-      <div className="w-3/5 mt-5">
-        <Breadcrumb />
+        <div className="w-full mt-4">
+          <Breadcrumb />
+        </div>
       </div>
     </>
   );

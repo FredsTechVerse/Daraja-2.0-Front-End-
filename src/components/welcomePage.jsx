@@ -5,16 +5,19 @@ const WelcomePage = () => {
     <motion.div
       className="flex flex-col justify-center items-center bg-green-500 w-screen h-screen"
       animate={{
-        scale: [0.9, 1.5],
-        opacity: [1.0, 0],
-        borderRadius: ["30px", "0px"],
-        transition: {},
+        opacity: [0, 1],
+        transition: {
+          duration: 1,
+        },
       }}
     >
       <motion.p
         className="uppercase text-3xl"
         animate={{
-          opacity: [1, 0],
+          opacity: [0, 1],
+        }}
+        transition={{
+          duration: 0.8,
         }}
       >
         Daraja 2.0

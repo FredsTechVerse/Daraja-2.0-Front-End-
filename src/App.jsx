@@ -9,7 +9,7 @@ import CustomNav from "./components/CustomNav";
 import BreadCrumb from "./components/BreadCrumb";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
-  const [initialLoad, setInitialLoad] = useState(true);
+  const [initialLoad, setInitialLoad] = useState(false);
   const [statusTracker, setStatusTracker] = useState(true);
   const [response, setResponse] = useState("");
   const [responseTracker, setResponseTracker] = useState(false);
@@ -23,7 +23,6 @@ function App() {
       try {
         let { data } = await axios.get("history");
         setPaymentHistory(data);
-        setInitialLoad(false);
         setStatusTracker(true);
         setResponse("Database connected successfully");
         setResponseTracker(true);
@@ -40,14 +39,15 @@ function App() {
       }
     };
     paymentData();
+    setTimeout(() => {
+      setInitialLoad(true);
+    }, 1000);
   }, []);
 
   return (
     <Router>
-      <div className="App w-full flex flex-col items-center justify-center p-5">
+      <div className="App w-full flex flex-col items-center justify-center">
         {initialLoad ? (
-          <WelcomePage />
-        ) : (
           <>
             <CustomNav />
             <Routes>
@@ -60,6 +60,8 @@ function App() {
               ></Route>
             </Routes>
           </>
+        ) : (
+          <WelcomePage />
         )}
       </div>
       <div>
