@@ -5,7 +5,7 @@ const CustomNav = () => {
     <>
       <nav className="w-full flex flex-row justify-center items-center mt-5">
         <p className="w-full text-center uppercase font-bold py-2 ml-2">
-          {`STK PUSH (LIPA NA MPESA) DEMO`}
+          {`LIPA NA MPESA DEMO`}
         </p>
       </nav>
     </>

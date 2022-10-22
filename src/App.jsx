@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 import axios from "./axios";
 import Form from "./components/Form";
-import History from "./components/History";
 import WelcomePage from "./components/welcomePage";
-import CustomNav from "./components/CustomNav";
-import BreadCrumb from "./components/BreadCrumb";
+import RedirectPage from "./components/Pages/RedirectPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   const [initialLoad, setInitialLoad] = useState(false);
@@ -49,10 +46,12 @@ function App() {
       <div className="App w-full flex flex-col items-center justify-center">
         {initialLoad ? (
           <>
-            <CustomNav />
             <Routes>
-              <Route path="/" element={<Form />}></Route>
-              <Route path="/home" element={<Form />}></Route>
+              <Route exact path="/" element={<Form />}></Route>
+              <Route exact path="/lastPage" element={<RedirectPage />}></Route>
+              <Route exact path="/home" element={<Form />}></Route>
+              <Route exact path="*" element={<Form />}></Route>
+
               {/* <Route
                 exact
                 path="/table"

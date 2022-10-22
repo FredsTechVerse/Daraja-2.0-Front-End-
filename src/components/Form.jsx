@@ -3,8 +3,10 @@ import Button from "./Button";
 import axios from "../axios";
 // import { motion } from "framer-motion";
 // import Breadcrumb from "../components/BreadCrumb";
-
+import CustomNav from "./CustomNav";
+import { useNavigate } from "react-router-dom";
 const Form = () => {
+  let navigate = useNavigate();
   // DECLARATION OF VARIABLES
   //=========================
   const [stkPushNo, setStkPushNo] = useState("");
@@ -30,14 +32,19 @@ const Form = () => {
         if (response.data == 0) {
           setStatusTracker(true);
           setResponse("STK push has been sent successfully.");
+          setFName("");
+          setLName("");
+          setAmount("");
+          setStkPushNo("");
           setResponseTracker(true);
           setTimeout(() => {
             setResponseTracker(false);
           }, 3000);
+          navigate("/lastPage");
         } else {
           console.log(`Post request Data =>${response.data}`);
           setStatusTracker(false);
-          setResponse(`${response.data}`);
+          setResponse(`Check if all details have been filled correctly.`);
           setResponseTracker(true);
           setTimeout(() => {
             setResponseTracker(false);
@@ -46,7 +53,7 @@ const Form = () => {
       })
       .catch((error) => {
         //This simply is called when the promise was not fulfilled.An error handles an error(ie any status other than okay.).
-        console.log(error.message);
+        // console.log(error.message);
         /*By default it we append the error,the error.message will be output.We have to destructure 
         further to get our custom error message which is in the response data section. But we have to understand that also in the front end we have used 
         axios. So ata hiyo imepata a response of status 500 meaning the promise has not been fulfilled,so it has to shout all over the 
@@ -54,7 +61,8 @@ const Form = () => {
         DARAJA GIVES IT THE WHOLE BODY. I GIVE IT A CUSTOM MESSAGE.THE AXIOS MESSAGE IS GENERATED FROM THE SERVER STATUS IT RECIEVES
         FROM WHEREVER IT WAS DELIVERING THE INFOMATIN TO. */
         setStatusTracker(false);
-        setResponse(`${failed_req}`);
+        // setResponse(`${failed_req}`);
+        setResponse(`Check if all details have been filled correctly.`);
         setResponseTracker(true);
         setTimeout(() => {
           setResponseTracker(false);
@@ -65,7 +73,7 @@ const Form = () => {
   return (
     <div className="px-5">
       <form className="border-2 border-rose-500 rounded-md flex-col items-center justify-center mt-5 px-5 py-5 w-full">
-        {/* <Breadcrumb /> */}
+        <CustomNav />
         <div className="flex phone:flex-col justify-around items-center my-10">
           <label for="contact" className="w-1/5 phone:w-full">
             Names
