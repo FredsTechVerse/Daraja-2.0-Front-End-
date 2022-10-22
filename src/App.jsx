@@ -53,11 +53,11 @@ function App() {
             <Routes>
               <Route path="/" element={<Form />}></Route>
               <Route path="/home" element={<Form />}></Route>
-              <Route
+              {/* <Route
                 exact
                 path="/table"
                 element={<History history={paymentHistory} />}
-              ></Route>
+              ></Route> */}
             </Routes>
           </>
         ) : (
