@@ -28,7 +28,7 @@ const Form = () => {
     axios
       .post("/express", customerInfo)
       .then((response) => {
-        console.log(`Response received => ${response.data}`);
+        console.log(`Information has been verified successfully.`);
         if (response.data == 0) {
           setStatusTracker(true);
           setResponse("STK push has been sent successfully.");
@@ -41,25 +41,18 @@ const Form = () => {
             setResponseTracker(false);
           }, 3000);
           navigate("/lastPage");
-        } else {
-          console.log(`Post request Data =>${response.data}`);
-          setStatusTracker(false);
-          setResponse(`Check if all details have been filled correctly.`);
-          setResponseTracker(true);
-          setTimeout(() => {
-            setResponseTracker(false);
-          }, 3000);
         }
+        // else {
+        //   console.log(`Post request Data =>${response.data}`);
+        //   setStatusTracker(false);
+        //   setResponse(`Check if all details have been filled correctly.`);
+        //   setResponseTracker(true);
+        //   setTimeout(() => {
+        //     setResponseTracker(false);
+        //   }, 3000);
+        // }
       })
       .catch((error) => {
-        //This simply is called when the promise was not fulfilled.An error handles an error(ie any status other than okay.).
-        // console.log(error.message);
-        /*By default it we append the error,the error.message will be output.We have to destructure 
-        further to get our custom error message which is in the response data section. But we have to understand that also in the front end we have used 
-        axios. So ata hiyo imepata a response of status 500 meaning the promise has not been fulfilled,so it has to shout all over the 
-        place with the info that it has been given.
-        DARAJA GIVES IT THE WHOLE BODY. I GIVE IT A CUSTOM MESSAGE.THE AXIOS MESSAGE IS GENERATED FROM THE SERVER STATUS IT RECIEVES
-        FROM WHEREVER IT WAS DELIVERING THE INFOMATIN TO. */
         setStatusTracker(false);
         // setResponse(`${failed_req}`);
         setResponse(`Check if all details have been filled correctly.`);
