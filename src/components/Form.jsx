@@ -40,7 +40,7 @@ const Form = () => {
           setTimeout(() => {
             setResponseTracker(false);
           }, 3000);
-          navigate("/lastPage");
+          navigate("/last-page");
         }
         // else {
         //   console.log(`Post request Data =>${response.data}`);

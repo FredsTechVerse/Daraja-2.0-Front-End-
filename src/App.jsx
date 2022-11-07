@@ -48,7 +48,7 @@ function App() {
           <>
             <Routes>
               <Route exact path="/" element={<Form />}></Route>
-              <Route exact path="/lastPage" element={<RedirectPage />}></Route>
+              <Route exact path="/last-page" element={<RedirectPage />}></Route>
               <Route exact path="/home" element={<Form />}></Route>
               <Route exact path="*" element={<Form />}></Route>
 
