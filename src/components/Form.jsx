@@ -64,9 +64,9 @@ const Form = () => {
   };
 
   return (
-    <div className="px-5">
-      <form className="border-2 border-rose-500 rounded-md flex-col items-center justify-center mt-5 px-5 py-5 w-full">
-        <CustomNav />
+    <div className="flex flex-col w-4/5 items-center justify-center border-2 border-green-400 mt-5">
+      <CustomNav />
+      <form className="flex-col items-center justify-center px-5 w-full">
         <div className="flex phone:flex-col justify-around items-center my-10">
           <label for="contact" className="w-1/5 phone:w-full">
             Names
