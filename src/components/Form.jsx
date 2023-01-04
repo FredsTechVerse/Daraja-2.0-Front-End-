@@ -53,6 +53,7 @@ const Form = () => {
         // }
       })
       .catch((error) => {
+        console.log(error.message);
         setStatusTracker(false);
         // setResponse(`${failed_req}`);
         setResponse(`Check if all details have been filled correctly.`);
