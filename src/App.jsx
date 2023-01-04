@@ -16,6 +16,9 @@ function App() {
   const [paymentHistory, setPaymentHistory] = useState([]);
 
   useEffect(() => {
+    //This will be made available when user authentication is in play
+    //================================================================
+    /*
     const paymentData = async () => {
       try {
         let { data } = await axios.get("history");
@@ -35,10 +38,10 @@ function App() {
         }, 3000);
       }
     };
-    paymentData();
+    paymentData(); */
     setTimeout(() => {
       setInitialLoad(true);
-    }, 1000);
+    }, 1200);
   }, []);
 
   return (
