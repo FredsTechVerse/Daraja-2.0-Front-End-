@@ -61,9 +61,9 @@ const Form = () => {
   };
 
   return (
-    <div className="flex flex-col w-4/5 items-center justify-center border-2 border-green-400 mt-5">
+    <div className="flex flex-col phone:w-full phone:px-2 phone:mt-1 w-4/5 items-center justify-center phone:border-none border-2 border-green-400 phone mt-5 rounded-lg">
       <CustomNav />
-      <form className="flex-col items-center justify-center px-5 w-full">
+      <form className="flex-col items-center justify-center px-5 w-full phone:border-2 phone:border-green-200 phone:rounded-b-md">
         {responseTracker ? (
           <p
             className={`${
