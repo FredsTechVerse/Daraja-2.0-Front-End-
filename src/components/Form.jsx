@@ -17,56 +17,6 @@ const Form = () => {
   const [statusTracker, setStatusTracker] = useState(true);
   const [response, setResponse] = useState("");
 
-  // const mpesaExpress = async (e) => {
-  //   e.preventDefault();
-
-  //   let customerInfo = {
-  //     fName,
-  //     lName,
-  //     stkPushNo: `254${stkPushNo}`,
-  //     amount,
-  //   };
-  //   await axios
-  //     .post("/express", customerInfo)
-  //     .then((response) => {
-  //       console.log(JSON.stringify(response));
-  //       console.log(`Information has been verified successfully.`);
-  //       console.log(response.status);
-  //       if (response.status == 200) {
-  //         setStatusTracker(true);
-  //         setResponse("STK push has been sent successfully.");
-  //         setFName("");
-  //         setLName("");
-  //         setAmount("");
-  //         setStkPushNo("");
-  //         setResponseTracker(true);
-  //         setTimeout(() => {
-  //           setResponseTracker(false);
-  //         }, 3000);
-  //         navigate("/last-page");
-  //       }
-  //       // else {
-  //       //   console.log(`Post request Data =>${response.data}`);
-  //       //   setStatusTracker(false);
-  //       //   setResponse(`Check if all details have been filled correctly.`);
-  //       //   setResponseTracker(true);
-  //       //   setTimeout(() => {
-  //       //     setResponseTracker(false);
-  //       //   }, 3000);
-  //       // }
-  //     })
-  //     .catch((error) => {
-  //       console.log(`Error has occured ${error}`);
-  //       setStatusTracker(false);
-  //       // setResponse(`${failed_req}`);
-  //       setResponse(`Check if all details have been filled correctly.`);
-  //       setResponseTracker(true);
-  //       setTimeout(() => {
-  //         setResponseTracker(false);
-  //       }, 3000);
-  //     });
-  // };
-
   const mpesaExpress = async (e) => {
     try {
       e.preventDefault();
@@ -95,8 +45,8 @@ const Form = () => {
       // Destructuring the axios error which comes in 3 diff flavours
       const { message, status, code, config } = error;
       const { method, url, data } = config;
-      // console.log(message, method, url, data);
-      // console.log(status, code);
+      console.log(message, method, url, data);
+      console.log(status, code);
       // Status is present but one cannot reach out to it.
 
       setStatusTracker(false);
