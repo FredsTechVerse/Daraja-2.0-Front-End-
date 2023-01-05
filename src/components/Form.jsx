@@ -82,7 +82,7 @@ const Form = () => {
             Names
           </label>
           <input
-            className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 placeholder:text-sm"
             id="fName"
             type="Text"
             placeholder="First Name"
@@ -94,7 +94,7 @@ const Form = () => {
           ></input>
 
           <input
-            className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            className="phone:w-full phone:my-1 px-4 mr-4 w-2/5 bg-white-200 appearance-none py-2 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 placeholder:text-sm"
             id="lName"
             type="Text"
             placeholder="Last Name"
@@ -112,14 +112,14 @@ const Form = () => {
             </label>
             <div className=" phone:flex phone:w-full phone:items-center">
               <input
-                className="px-4 w-1/5 phone:w-2/5 phone:m-0  bg-white-200 appearance-none py-2 mr-1 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                className="px-2 w-1/5 phone:w-2/5 phone:m-0  bg-white-200 appearance-none py-2 mr-1 border-2 border-green-400 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 "
                 type="Text"
                 required
                 value="+254"
                 readOnly
               />
               <input
-                className="w-3/4 phone:w-full phone:ml-2  bg-white-200 appearance-none ml-2  border-2 border-green-400 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                className="w-3/4 phone:w-full phone:ml-2  bg-white-200 appearance-none ml-2  border-2 border-green-400 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 placeholder:text-sm"
                 id="contact"
                 type="Number"
                 placeholder="Safaricom No."
@@ -136,7 +136,7 @@ const Form = () => {
               Amount
             </label>
             <input
-              className="w-3/5 phone:w-3/5 phone:m-1 bg-white-200 appearance-none border-2 border-green-400 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+              className="w-3/5 phone:w-3/5 phone:m-1 bg-white-200 appearance-none border-2 border-green-400 rounded  py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 placeholder:text-sm"
               id="amount"
               type="Number"
               placeholder=" Enter Amount"
@@ -149,7 +149,7 @@ const Form = () => {
           </div>
         </div>
 
-        <div className="flex flex-col justify-center items-center w-full mt-8">
+        <div className="flex flex-col justify-center items-center w-full mt-8 ">
           <Button
             type="button"
             text="Complete Transaction"
